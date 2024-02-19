@@ -4,9 +4,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Human {
-    public String picture;
-    public  String name;
-    public int age;
+    private final String picture;
+    protected   String name;
+    private int age;
     private static int count = 0;
     public static List<Human> neighboarsList = new ArrayList<>();
 
