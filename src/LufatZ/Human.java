@@ -31,9 +31,18 @@ public class Human {
     public static int getAge(Human person){
         return person.age;
     }
-
-    public void birthday(){
-        age++;
+    public static Human getHuman(String name){
+        for (Human person : neighboarsList) {
+            if (Human.getName(person).equalsIgnoreCase(name)) {
+                System.out.println("We found " + person.name + "!");
+                return person;
+            }
+        }
+        System.out.println(name + " not found!");
+        return null;
+    }
+    public static void birthday(Human neighbor){
+        neighbor.age++;
     }
 
 }

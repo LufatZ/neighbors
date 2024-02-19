@@ -3,8 +3,6 @@ package LufatZ;
 
 import java.util.Scanner;
 
-import static LufatZ.Human.neighboarsList;
-
 public class Main {
     static Scanner scanner = new Scanner(System.in);
 
@@ -21,13 +19,16 @@ public class Main {
             command = scanner.nextLine();
             switch (command){
                 case "neighborhood" : neighborhood(); break;
-                case "commands": commands(); break;
+                case "commands": continue;
                 case "neighbor":
                     System.out.println("Please enter a human name");
-                    findNeighbor(scanner.nextLine()); break;
-                default: commands(); break;
+                    neighborOperation(scanner.nextLine()); break;
+                case "exit": return;
+                default: System.out.println("Operation " + command + " not found"); break;
             }
         }
+        System.out.println("See you next time!");
+        scanner.close();
     }
     public static void commands(){
         System.out.println("Type \"neighborhood\" to get informed who lives in your neighborhood");
@@ -41,21 +42,21 @@ public class Main {
             System.out.println(Human.neighboarsList.get(count).name);
         }
     }
-    public static void findNeighbor(String human) {
-        for (Human person : neighboarsList) {
-            if (Human.getName(person).equalsIgnoreCase(human)) {
-                human = Human.getName(person);
-                System.out.println("We found " + human + "!");
-                System.out.println("what do you want to know about " + human);
-                String info = scanner.nextLine();
-                if (info.contains("ag")){
-                    System.out.println(human + " is " + Human.getAge(person) + " years old!");
-                } else if (info.contains("pi")) {
-                    System.out.println("This is the path to the picture"+Human.getImg(person));
-                }
-                return;
-            }
+    public static void neighborOperation(String name) {
+        Human neighbor = Human.getHuman(name);
+        if (neighbor != null) {
+            name = Human.getName(neighbor);
+            System.out.println("what do you want to know about " + name);
+            System.out.println("Available options: age | picture | birthday");
+            String info = scanner.nextLine();
+            if (info.contains("ag")){
+                System.out.println(name + " is " + Human.getAge(neighbor) + " years old!");
+            } else if (info.contains("pi")) {
+                System.out.println("This is the path to the picture"+Human.getImg(neighbor));
+            } else if (info.contains("bi")) {
+                Human.birthday(neighbor);
+                System.out.println("You should congratulate " + name +" to birthday! "+name+" is now " + Human.getAge(neighbor) + " years old!");
+            } else {System.out.println(info + "not found!");}
         }
-        System.out.println("Person not found!");
     }
 }
