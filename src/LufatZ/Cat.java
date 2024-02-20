@@ -17,18 +17,18 @@ public class Cat extends LivingEnity {
     public static void makeSound(Cat cat) {
         System.out.println(cat.name + ": Miau!");
     }
-    public static void getPet(LivingEnity person){
+    public static void getPet(String person){
         boolean foundCat = false;
         for (Cat cat : animalList) {
-            if (Objects.equals(cat.owner, person.name)) {
-                System.out.println(cat.name + " is the pet of " +person.name);
+            if (Objects.equals(cat.owner, person)) {
+                System.out.println(cat.name + " is the pet of " + person);
                 Cat.makeSound(cat);
                 foundCat=true;
                 break;
             }
         }
         if (!foundCat){
-            System.out.println(person.name + " does not hav a pet");
+            System.out.println(person + " does not hav a pet");
         }
     }
 }

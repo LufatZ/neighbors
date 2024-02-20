@@ -57,7 +57,7 @@ public class Main {
                 Human.birthday(neighbor);
                 System.out.println("You should congratulate " + name +" to birthday! "+name+" is now " + Human.getAge(neighbor) + " years old!");
             } else if (info.contains("pe")) {
-                Cat.getPet(neighbor);
+                Cat.getPet(name);
             } else {System.out.println(info + "not found!");}
         }
     }
