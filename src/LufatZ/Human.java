@@ -2,34 +2,22 @@ package LufatZ;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
-public class Human {
-    private final String picture;
-    protected   String name;
-    private int age;
-    private static int count = 0;
-    public static List<Human> neighboarsList = new ArrayList<>();
+import static LufatZ.Cat.animalList;
+import static LufatZ.Cat.petMap;
+
+public class Human extends LivingEnity {
+    protected static List<Human> neighboarsList = new ArrayList<>();
+    int count = 0;
+    static Cat pet;
 
     public Human(String picture, String name, int age) {
-        this.picture = picture;
-        this.name = name;
-        this.age =age;
-
-        count++;
+        super(picture, name, age);
         neighboarsList.add(this);
     }
-
     public static int getCount(){
-        return count;
-    }
-    public static String getName(Human person){
-        return person.name;
-    }
-    public static String getImg(Human person){
-        return person.picture;
-    }
-    public static int getAge(Human person){
-        return person.age;
+        return neighboarsList.size();
     }
     public static Human getHuman(String name){
         for (Human person : neighboarsList) {
@@ -41,8 +29,11 @@ public class Human {
         System.out.println(name + " not found!");
         return null;
     }
-    public static void birthday(Human neighbor){
-        neighbor.age++;
+    public static void neighborhood(){
+        System.out.println("There are "+ Human.getCount() +" People in your neighborhood:");
+        for (int count = 0; count < Human.getCount(); count++) {
+            System.out.println(Human.neighboarsList.get(count).name);
+        }
     }
 
 }
