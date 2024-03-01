@@ -1,10 +1,10 @@
 import java.util.*;
 
-public class Cat extends LivingEnity {
+public class Cat extends LivingEntity {
     public static List<Cat> animalList = new ArrayList<>();
     public static Map<String,String> petMap = new TreeMap<>();
     protected String owner;
-    public Cat(String picture, String name, int age, LivingEnity owner) {
+    public Cat(String picture, String name, int age, Human owner) {
         super(picture, name, age);
         this.owner = owner.name;
         petMap.put(this.name, owner.name);
@@ -19,14 +19,14 @@ public class Cat extends LivingEnity {
         boolean foundCat = false;
         for (Cat cat : animalList) {
             if (Objects.equals(cat.owner, person)) {
-                System.out.println(cat.name + " is the pet of " + person);
+                System.out.println("Info: " + cat.name + " is the pet of " + person);
                 Cat.makeSound(cat);
                 foundCat=true;
                 break;
             }
         }
         if (!foundCat){
-            System.out.println(person + " does not hav a pet");
+            System.out.println("Error: " + person + " does not have a pet");
         }
     }
 }

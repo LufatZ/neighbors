@@ -1,0 +1,8 @@
+[
+  {
+    "name": "Example Pet",
+    "picture": "example_pet.png",
+    "age": "99",
+    "owner": "Paul"
+  }
+]
